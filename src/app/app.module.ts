@@ -10,7 +10,7 @@ import { PlayerController } from '@app/player/player.controller';
 import { PlayersService } from '@app/player/player.service';
 import { RATING_QUEUE } from '@common/constants';
 import { RequestContextMiddleware } from '@common/http/request-context.middleware';
-import {RedisCacheService} from "@cache//cache.service";
+import {CacheModule} from "@cache//cache.module";
 
 @Module({
     imports: [
@@ -19,9 +19,10 @@ import {RedisCacheService} from "@cache//cache.service";
         TypeOrmModule.forFeature([Player, Rating]),
         BullModule.forRootAsync({ imports: [ConfigModule], inject: [ConfigService], useFactory: (cfg: ConfigService) => ({ connection: redisConfig(cfg) }) }),
         BullModule.registerQueue({ name: RATING_QUEUE }),
+        CacheModule
     ],
     controllers: [PlayerController],
-    providers: [PlayersService, RedisCacheService],
+    providers: [PlayersService],
 })
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) { consumer.apply(RequestContextMiddleware).forRoutes('*'); }

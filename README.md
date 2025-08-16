@@ -1,7 +1,26 @@
-## Quick start
+## Getting Started
 
-
-Quick first setup&start
+1. Environment variables create a .env file at the project root:
 ```bash
-cp .env.example .env && docker compose up -d && yarn && yarn build && yarn start:dev # Swagger: http://localhost:3000/docs
+    cp .env.example .env
+```
+
+2. Run Postgres and Redis
+```bash
+    docker compose up -d
+```
+
+3. Install dependecies
+```bash
+    yarn
+```
+
+4. Run migrations
+```bash
+    yarn migration:generate && yarm migration:run
+```
+
+5. Start the app (development)
+```bash
+    yarn start:dev
 ```
