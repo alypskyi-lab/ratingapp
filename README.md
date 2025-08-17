@@ -20,7 +20,12 @@
     yarn migration:generate && yarm migration:run
 ```
 
-5. Start the app (development)
+5. Seed players
+```bash
+    yarn seed:players
+```
+
+6. Start the app (development)
 ```bash
     yarn start:dev
 ```

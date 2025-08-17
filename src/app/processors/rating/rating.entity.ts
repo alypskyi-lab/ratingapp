@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { Player } from '@entities/player.entity';
+import { Player } from '@app/api/player/player.entity';
 
 @Entity('ratings')
 export class Rating {
@@ -15,9 +15,6 @@ export class Rating {
 
   @Column('float', { default: 8.333 })
   sigma!: number;
-
-  @Column('float', { default: 0 })
-  exposure!: number;
 
   @UpdateDateColumn({ precision: 3 })
   updatedAt!: Date;

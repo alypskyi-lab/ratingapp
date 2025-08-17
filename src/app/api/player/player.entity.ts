@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Rating } from '@entities/rating.entity';
+import { Rating } from '@app/processors/rating/rating.entity';
 
 @Entity('players')
 export class Player {

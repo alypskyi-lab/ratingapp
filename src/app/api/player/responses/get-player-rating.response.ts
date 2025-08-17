@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class GetPlayerRatingResponseDto {
+export class GetPlayerRatingResponse {
     @ApiProperty()
     id!: string;
 
@@ -9,7 +9,4 @@ export class GetPlayerRatingResponseDto {
 
     @ApiProperty()
     sigma!: number;
-
-    @ApiProperty()
-    exposure!: number;
 }
