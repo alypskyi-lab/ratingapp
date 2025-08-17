@@ -10,7 +10,7 @@ export type RedisCacheDecoratorOptions = {
   // TTL in seconds. Default: 300
   ttl?: number;
   cacheFalsy?: boolean;
-  withEtag?: boolean; // if true, attach ETag header and handle 304
+  withEtag?: boolean;
 };
 
 export function Cached(
@@ -36,8 +36,8 @@ export function Cached(
       const key = `${namespace}:${baseKey}`;
       logger.debug(`Redis key=${key}`);
 
-      const ctx: any = args[args.length - 1]; // last arg often contains Nest execution context
-      const res: any = ctx?.res ?? ctx?.response; // try to extract response object if passed
+      const ctx: any = args[args.length - 1];
+      const res: any = ctx?.res ?? ctx?.response;
       const req: any = ctx?.req ?? ctx?.request;
 
       try {

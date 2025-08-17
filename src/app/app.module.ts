@@ -14,6 +14,8 @@ import { typeOrmConfig } from '@config/database.config';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import {LeaderboardController} from "@app/api/rating/rating.controller";
+import {RatingService} from "@app/api/rating/rating.service";
 
 @Module({
   imports: [
@@ -23,8 +25,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     QueueInfraModule,
     CacheModule,
   ],
-  controllers: [PlayerController, MatchController],
-  providers: [PlayersService, MatchService, RatingsProcessor],
+  controllers: [PlayerController, MatchController, LeaderboardController],
+  providers: [PlayersService, MatchService, RatingsProcessor, RatingService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
