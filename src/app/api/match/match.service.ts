@@ -1,17 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { Match } from './match.entity';
-import { InjectQueue } from '@nestjs/bullmq';
-import { Queue } from 'bullmq';
-import { RATING_QUEUE } from '@common/constants';
 import {MatchSubmitRequest} from "@app/api/match/requests/match-submit.request";
 import {MatchParticipant} from "@app/api/match/match-participant.entity";
+import {RecomputeRatingEvent} from "@app/events/recompute-rating.event";
+import {QueueService} from "@common/services/queue/queue.service";
 
 @Injectable()
 export class MatchService {
   constructor(
       private readonly ds: DataSource,
-      @InjectQueue(RATING_QUEUE) private readonly queue: Queue,
+      private readonly queue: QueueService
   ) {}
 
   async submit(request: MatchSubmitRequest): Promise<string> {
@@ -31,11 +30,7 @@ export class MatchService {
       })
       await trx.save(matchParticipants);
 
-      await this.queue.add(
-          'recompute',
-          { matchId: match.id },
-          { removeOnComplete: true, attempts: 3 },
-      );
+      await this.queue.add(new RecomputeRatingEvent(match.id));
 
       return match.id;
     });
