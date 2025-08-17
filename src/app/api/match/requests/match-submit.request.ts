@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsArray, ArrayMinSize, ValidateNested, IsString, IsNumber } from 'class-validator';
 import { Type } from 'class-transformer';
+import { ArrayMinSize, IsArray, IsNumber, IsString, ValidateNested } from 'class-validator';
 
 class SubmitPlayerDto {
   @ApiProperty()

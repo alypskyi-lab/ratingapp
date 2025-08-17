@@ -6,17 +6,17 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-aurory}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-aurory}
       POSTGRES_DB: ${POSTGRES_DB:-aurory}
-    ports: ["5432:5432"]
+    ports: ['5432:5432']
     volumes: [pgdata:/var/lib/postgresql/data]
 
   mongo:
     image: mongo:7
-    ports: ["27017:27017"]
+    ports: ['27017:27017']
     volumes: [mongodata:/data/db]
 
   redis:
     image: redis:7
-    ports: ["6379:6379"]
+    ports: ['6379:6379']
 
 volumes:
   pgdata:

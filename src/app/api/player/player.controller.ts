@@ -1,10 +1,11 @@
+import { Player } from '@app/api/player/player.entity';
+import { Cached } from '@cache//cache.decorator';
+import { CacheNamespace } from '@common/enums/cache.namespace.enum';
 import { Controller, Get, Param } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { Cached } from "@cache//cache.decorator";
-import { CacheNamespace } from "@common/enums/cache.namespace.enum";
-import { PlayersService } from "./player.service";
-import { GetPlayerRatingResponse } from "./responses/get-player-rating.response";
-import {Player} from "@app/api/player/player.entity";
+
+import { PlayersService } from './player.service';
+import { GetPlayerRatingResponse } from './responses/get-player-rating.response';
 
 @ApiTags('players')
 @Controller('players')

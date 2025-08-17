@@ -1,5 +1,5 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
 import { RequestContext } from '@common/http/request-context';
+import { Injectable, NestMiddleware } from '@nestjs/common';
 
 @Injectable()
 export class RequestContextMiddleware implements NestMiddleware {

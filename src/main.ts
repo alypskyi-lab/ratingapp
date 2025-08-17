@@ -1,8 +1,9 @@
-import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@app/app.module';
+import { HttpExceptionFilter } from '@common/http/http-exception.filter';
 import { ValidationPipe } from '@nestjs/common';
-import {setupSwagger} from "./swagger";
-import {HttpExceptionFilter} from "@common/http/http-exception.filter";
+import { NestFactory } from '@nestjs/core';
+
+import { setupSwagger } from './swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,4 +12,4 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   await app.listen(process.env.PORT || 3000);
 }
-bootstrap();
+bootstrap().then();

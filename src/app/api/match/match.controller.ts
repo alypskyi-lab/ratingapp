@@ -1,7 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import {ApiOkResponse, ApiTags} from '@nestjs/swagger';
-import { MatchSubmitRequest } from './requests/match-submit.request';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+
 import { MatchService } from './match.service';
+import { MatchSubmitRequest } from './requests/match-submit.request';
 
 @ApiTags('match')
 @Controller('match')

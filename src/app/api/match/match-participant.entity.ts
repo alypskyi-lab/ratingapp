@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+
 import { Match } from './match.entity';
 
 @Entity('match_participants')
@@ -6,25 +7,25 @@ import { Match } from './match.entity';
 @Index('idx_mp_player', ['playerId'])
 @Index('idx_mp_player', ['playerId'])
 export class MatchParticipant {
-    @PrimaryGeneratedColumn('uuid')
-    id!: string;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
 
-    @Column('uuid')
-    matchId!: string;
+  @Column('uuid')
+  matchId!: string;
 
-    @ManyToOne(() => Match, { onDelete: 'CASCADE' })
-    @JoinColumn({ name: 'matchId' })
-    match!: Match;
+  @ManyToOne(() => Match, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'matchId' })
+  match!: Match;
 
-    @Column('int')
-    team!: number;
+  @Column('int')
+  team!: number;
 
-    @Column('uuid')
-    playerId!: string;
+  @Column('uuid')
+  playerId!: string;
 
-    @Column('int', { nullable: true })
-    score?: number | null;
+  @Column('int', { nullable: true })
+  score?: number | null;
 
-    @CreateDateColumn({ precision: 3 })
-    createdAt!: Date;
+  @CreateDateColumn({ precision: 3 })
+  createdAt!: Date;
 }

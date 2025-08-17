@@ -1,10 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('matches')
 export class Match {
-    @PrimaryGeneratedColumn('uuid')
-    id!: string;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
 
-    @CreateDateColumn()
-    createdAt!: Date;
+  @CreateDateColumn()
+  createdAt!: Date;
 }
