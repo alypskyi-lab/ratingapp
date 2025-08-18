@@ -14,7 +14,9 @@
     "lint": "eslint \"{src,test}/**/*.ts\" --max-warnings=0",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
